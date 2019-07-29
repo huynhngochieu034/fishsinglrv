@@ -1,9 +1,12 @@
  @extends('welcome')
  @section('content')
 
-  <div class="features_items"><!--features_items-->
-                        <h2 class="title text-center">Sản phẩm mới nhất</h2>
-                        @foreach($all_product as $key => $product)
+  <div class="features_items"><!--features_items-->		
+  						@foreach($category_name as $key => $catee)
+                        <h2 class="title text-center">{{$catee->category_name}}</h2>
+                        @endforeach  
+                        @foreach($category_by_id as $key => $product)
+                         <a href="{{URL::to('/chi-tiet-san-pham/'.$product->product_id)}}">
                         <div class="col-sm-4">
                             <div class="product-image-wrapper">
                                 <div class="single-products">
@@ -11,7 +14,7 @@
                                             <img src="{{URL::to('public/uploads/product/'.$product->product_image)}}" height="150" width="100" alt="" />
                                             <h2>{{number_format($product->product_price).'  VNĐ'}}</h2>
                                             <p>{{$product->product_name}}</p>
-                                            <a href="{{route('add.shopping.cart',$product->product_id)}}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm giỏ hàng</a>
+                                            <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm giỏ hàng</a>
                                         </div>
                                        
                                 </div>
@@ -23,13 +26,7 @@
                                 </div>
                             </div>
                         </div>
-                      @endforeach
-                       
-                        
-                    </div><!--features_items-->
-                    
-           
-                    
-                  
-                   
+                    </a>
+                      @endforeach  
+                    </div><!--features_items-->               
 @endsection 

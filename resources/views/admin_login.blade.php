@@ -6,7 +6,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 -->
 <!DOCTYPE html>
 <head>
-<title>Trang quản lý admin web</title>
+<title>Trang quản lý admin</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="Visitors Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
@@ -30,9 +30,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <div class="log-w3">
 <div class="w3layouts-main">
 	<h2>Đăng Nhập</h2>
-		<form action="#" method="post">
-			<input type="email" class="ggg" name="Email" placeholder="E-MAIL" required="">
-			<input type="password" class="ggg" name="Password" placeholder="PASSWORD" required="">
+	<?php
+	$message = Session::get('message');
+	if($message){
+		echo '<span class="text-alert">'.$message.'</span>';
+		Session::put('message',null);
+	}
+	?>
+		<form action="{{URL::to('/admin-dashboard')}}" method="post">
+			{{ csrf_field() }}
+			<input type="text" class="ggg" name="admin_email" placeholder="Nhập email" required="">
+			<input type="password" class="ggg" name="admin_password" placeholder="Nhập password" required="">
 			<span><input type="checkbox" />Ghi nhớ</span>
 			<h6><a href="#">Quên mật khẩu?</a></h6>
 				<div class="clearfix"></div>
